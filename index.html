@@ -308,25 +308,44 @@
 
 
   .cast-prompt {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    gap: clamp(18px, 3vw, 28px); text-align: center;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(20px, 4vw, 48px);
+  }
+  .cast-prompt .tag { align-self: flex-start; }
+  .cast-row {
+    display: grid;
+    grid-template-columns: minmax(280px, 42%) 1fr;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: center;
+    width: min(1180px, 100%);
+    margin-top: 8px;
+  }
+  @media (max-width: 900px) {
+    .cast-row { grid-template-columns: 1fr; }
+    .cast-prompt .big { text-align: center; }
   }
   .cast-prompt .big {
-    font-size: clamp(26px, 3.8vw, 44px);
+    font-size: clamp(26px, 3.6vw, 44px);
     line-height: 1.35; font-weight: 750; letter-spacing: -0.02em;
-    color: var(--text); max-width: 18em;
+    color: var(--text); text-align: left; max-width: 14em;
   }
   .cast-prompt .big em {
     font-style: normal; color: var(--pink);
   }
   .cast-shot {
-    width: min(420px, 92vw);
+    width: 100%;
+    max-height: calc(100vh - 140px);
     border-radius: 22px; overflow: hidden;
     border: 1px solid var(--line);
     background: #f3f3f5;
     box-shadow: 0 24px 50px rgba(0,0,0,.35);
+    display: flex; align-items: center; justify-content: center;
   }
-  .cast-shot img { display: block; width: 100%; height: auto; }
+  .cast-shot img {
+    display: block; width: 100%; height: auto;
+    max-height: calc(100vh - 140px);
+    object-fit: contain; object-position: top center;
+  }
 
 </style>
 </head>
@@ -393,9 +412,11 @@
   <!-- 3 cast prompt -->
   <section class="slide cast-prompt" data-title="组剧组">
     <div class="tag">03 · 一句话建组</div>
-    <p class="big">我发了一个提示词：<br/><em>请按照《我的前半生》匹配我App优化迭代组</em></p>
-    <div class="cast-shot">
-      <img src="cast-members.png" alt="成员：陈俊生 / 罗子君 / 贺涵 / 凌玲 / 薛甄珠 / 唐晶" />
+    <div class="cast-row">
+      <div class="cast-shot">
+        <img src="cast-members.png" alt="成员：陈俊生 / 罗子君 / 贺涵 / 凌玲 / 薛甄珠 / 唐晶" />
+      </div>
+      <p class="big">我发了一个提示词：<br/><em>请按照《我的前半生》匹配我App优化迭代组</em></p>
     </div>
   </section>
 
