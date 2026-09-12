@@ -307,8 +307,9 @@
   }
 
 
-  .cast-prompt {
-    display: flex; flex-direction: column; justify-content: center;
+  /* must NOT set display here — .slide {display:none} / .slide.active {display:flex} owns visibility */
+  .slide.cast-prompt.active {
+    flex-direction: column; justify-content: center;
     padding: clamp(20px, 4vw, 48px);
   }
   .cast-prompt .tag { align-self: flex-start; }
