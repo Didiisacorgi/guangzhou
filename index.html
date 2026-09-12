@@ -306,6 +306,28 @@
     width: 36px; height: 36px; font-size: 20px; line-height: 1;
   }
 
+
+  .cast-prompt {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: clamp(18px, 3vw, 28px); text-align: center;
+  }
+  .cast-prompt .big {
+    font-size: clamp(26px, 3.8vw, 44px);
+    line-height: 1.35; font-weight: 750; letter-spacing: -0.02em;
+    color: var(--text); max-width: 18em;
+  }
+  .cast-prompt .big em {
+    font-style: normal; color: var(--pink);
+  }
+  .cast-shot {
+    width: min(420px, 92vw);
+    border-radius: 22px; overflow: hidden;
+    border: 1px solid var(--line);
+    background: #f3f3f5;
+    box-shadow: 0 24px 50px rgba(0,0,0,.35);
+  }
+  .cast-shot img { display: block; width: 100%; height: auto; }
+
 </style>
 </head>
 <body>
@@ -368,17 +390,12 @@
     </div>
   </section>
 
-  <!-- 3 cast -->
-  <section class="slide" data-title="《我的后半生》剧组">
-    <div class="tag">03 · 《我的后半生》剧组</div>
-    <h2>分工先钉死，再开聊</h2>
-    <div class="grid 3" style="margin-top:8px">
-      <div class="card"><em>拍板</em><strong>贺涵 · 统筹</strong><p>值不值得做 / 砍到哪</p></div>
-      <div class="card"><em>排期</em><strong>陈俊生 · 项目</strong><p>范围、依赖、里程碑</p></div>
-      <div class="card"><em>交互视觉</em><strong>唐晶 · 设计</strong><p>流程、层级、状态、标注</p></div>
-      <div class="card"><em>体验</em><strong>罗子君</strong><p>第一次打开会不会懵</p></div>
-      <div class="card"><em>风控</em><strong>凌玲</strong><p>权限、脏数据、隐私</p></div>
-      <div class="card"><em>找茬</em><strong>薛甄珠</strong><p>复现、P0–P3、回归</p></div>
+  <!-- 3 cast prompt -->
+  <section class="slide cast-prompt" data-title="组剧组">
+    <div class="tag">03 · 一句话建组</div>
+    <p class="big">我发了一个提示词：<br/><em>请按照《我的前半生》匹配我App优化迭代组</em></p>
+    <div class="cast-shot">
+      <img src="cast-members.png" alt="成员：陈俊生 / 罗子君 / 贺涵 / 凌玲 / 薛甄珠 / 唐晶" />
     </div>
   </section>
 
