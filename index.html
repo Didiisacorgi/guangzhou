@@ -259,6 +259,53 @@
     font-size: 13px; color: var(--muted);
     border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; background: var(--card);
   }
+
+  .bot { cursor: pointer; }
+  .bot:focus-visible { outline: 2px solid var(--purple); outline-offset: 8px; border-radius: 50%; }
+  .bot-hint { margin-top: 10px; font-size: 12px; color: #6f678f; }
+  .intro-slide { justify-content: center; align-items: center; padding: clamp(16px, 3vw, 36px); }
+  .intro-frame {
+    width: min(1100px, 100%);
+    max-height: calc(100vh - 80px);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #fff;
+    box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  }
+  .intro-frame img {
+    display: block; width: 100%; height: auto; max-height: calc(100vh - 80px);
+    object-fit: contain; background: #fff;
+  }
+  .video-slide { align-items: center; text-align: center; }
+  .video-wrap {
+    width: min(960px, 100%);
+    border-radius: 18px; overflow: hidden;
+    border: 1px solid var(--line); background: #000;
+    box-shadow: 0 24px 60px rgba(139,124,255,.18);
+  }
+  .video-wrap video { display: block; width: 100%; height: auto; max-height: calc(100vh - 160px); background: #000; }
+  .video-modal {
+    position: fixed; inset: 0; z-index: 80;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(8,6,16,.82); backdrop-filter: blur(10px);
+    padding: 24px;
+  }
+  .video-modal.open { display: flex; }
+  .video-modal .panel {
+    width: min(960px, 100%);
+    border-radius: 18px; overflow: hidden;
+    border: 1px solid var(--line); background: #000;
+    position: relative;
+  }
+  .video-modal video { display: block; width: 100%; max-height: calc(100vh - 80px); }
+  .video-modal .close {
+    position: absolute; top: 10px; right: 12px; z-index: 2;
+    border: 0; border-radius: 999px; cursor: pointer;
+    background: rgba(0,0,0,.55); color: #fff;
+    width: 36px; height: 36px; font-size: 20px; line-height: 1;
+  }
+
 </style>
 </head>
 <body>
@@ -273,7 +320,7 @@
         <div class="spark s1"></div>
         <div class="spark s2"></div>
         <div class="spark s3"></div>
-        <div class="bot" id="coverBot">
+        <div class="bot" id="coverBot" role="button" tabindex="0" title="点击播放短片" aria-label="点击播放短片">
           <div class="wing l"></div>
           <div class="wing r"></div>
           <div class="heart h1"></div>
@@ -301,31 +348,24 @@
         </div>
       </div>
     </div>
+    <p class="bot-hint">点击上方 Bot 播放短片</p>
     <p class="hint">← → 或空格翻页 · F 全屏</p>
   </section>
 
-  <!-- 1 agenda -->
-  <section class="slide" data-title="议程">
-    <div class="tag">01 · 今天讲什么</div>
-    <h2>20 分钟框架</h2>
-    <div class="grid 2" style="margin-top:8px">
-      <div class="card"><em>故事</em><strong>1 个真实迭代</strong><p>oiioCare 首页：聊天能记，但太肃静</p></div>
-      <div class="card"><em>方法</em><strong>1 套《我的后半生》剧组打法</strong><p>拍板 / 设计 / 体验 / 风控 / 找茬 / 排期</p></div>
-      <div class="card"><em>产物</em><strong>可落地的输出</strong><p>方案对比、标注、状态表、预览图</p></div>
-      <div class="card"><em>带走</em><strong>你也能复制</strong><p>怎么建角色、怎么锁范围、怎么验收</p></div>
+  <!-- 1 about Orange -->
+  <section class="slide intro-slide" data-title="关于 Orange">
+    <div class="intro-frame">
+      <img src="orange-intro.jpg" alt="Orange，王雁尘 介绍" />
     </div>
   </section>
 
-  <!-- 2 why bots -->
-  <section class="slide" data-title="为什么">
-    <div class="tag">02 · 为什么不是单聊一个万能助手</div>
-    <h2>一个人迭代 App，容易混角色</h2>
-    <div class="grid 3" style="margin-top:10px">
-      <div class="card"><strong>又当产品又当设计</strong><p>方案和审美缠在一起，难砍范围</p></div>
-      <div class="card"><strong>没有人专门找茬</strong><p>空态、弱网、连点双记容易漏</p></div>
-      <div class="card"><strong>讨论容易发散</strong><p>「再加点功能」比「这轮只改首页」轻松</p></div>
+  <!-- 2 flat bot drama video -->
+  <section class="slide video-slide" data-title="Bot 动效短片">
+    <div class="tag">02 · 平面 Bot × 原声短片</div>
+    <h2 style="margin-bottom:14px">点封面 Bot，也能播这段</h2>
+    <div class="video-wrap">
+      <video id="slideVideo" src="xuezhenzhu-flatbot-4x3.mp4" controls playsinline preload="metadata"></video>
     </div>
-    <p style="margin-top:22px" class="lead"><span class="kicker">做法：</span>把角色拆开，放进同一个群，逼它们按职责说话。</p>
   </section>
 
   <!-- 3 cast -->
@@ -474,6 +514,13 @@
   </section>
 
 </div>
+
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="panel">
+    <button class="close" id="videoClose" type="button" aria-label="关闭">×</button>
+    <video id="modalVideo" src="xuezhenzhu-flatbot-4x3.mp4" controls playsinline></video>
+  </div>
+</div>
 <div class="footer-bar">
   <span>Bot和我的后半生「剧组」迭代我的App</span>
   <span id="page">1 / 1</span>
@@ -483,15 +530,45 @@
   let i = 0;
   const page = document.getElementById('page');
   const progress = document.getElementById('progress');
+  const coverBot = document.getElementById('coverBot');
+  const videoModal = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideo');
+  const slideVideo = document.getElementById('slideVideo');
+  const videoClose = document.getElementById('videoClose');
+
+  function openBotVideo() {
+    if (!videoModal || !modalVideo) return;
+    videoModal.classList.add('open');
+    videoModal.setAttribute('aria-hidden', 'false');
+    try { modalVideo.currentTime = 0; } catch (_) {}
+    modalVideo.play().catch(() => {});
+  }
+  function closeBotVideo() {
+    if (!videoModal || !modalVideo) return;
+    modalVideo.pause();
+    videoModal.classList.remove('open');
+    videoModal.setAttribute('aria-hidden', 'true');
+  }
+
   function show(n) {
+    closeBotVideo();
+    if (slideVideo && !slideVideo.paused) slideVideo.pause();
     i = (n + slides.length) % slides.length;
     slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
     page.textContent = (i + 1) + ' / ' + slides.length;
     progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    const active = slides[i];
+    if (active && active.dataset.title === 'Bot 动效短片' && slideVideo) {
+      try { slideVideo.currentTime = 0; } catch (_) {}
+      slideVideo.play().catch(() => {});
+    }
   }
   function next() { show(i + 1); }
   function prev() { show(i - 1); }
+
   window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeBotVideo(); return; }
+    if (videoModal && videoModal.classList.contains('open')) return;
     if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); next(); }
     if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
     if (e.key === 'f' || e.key === 'F') {
@@ -501,6 +578,7 @@
     if (e.key === 'Home') show(0);
     if (e.key === 'End') show(slides.length - 1);
   });
+
   let tx = null;
   window.addEventListener('touchstart', (e) => { tx = e.changedTouches[0].screenX; }, { passive: true });
   window.addEventListener('touchend', (e) => {
@@ -510,7 +588,13 @@
     tx = null;
   }, { passive: true });
 
-  // pupils removed — eye cutouts only; lips animate via CSS
+  coverBot?.addEventListener('click', (e) => { e.stopPropagation(); openBotVideo(); });
+  coverBot?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBotVideo(); }
+  });
+  videoClose?.addEventListener('click', closeBotVideo);
+  videoModal?.addEventListener('click', (e) => { if (e.target === videoModal) closeBotVideo(); });
+
   show(0);
 </script>
 </body>
