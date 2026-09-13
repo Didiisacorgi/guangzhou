@@ -510,7 +510,6 @@
     font-style: normal; color: var(--pink);
   }
 
-
   .slide.scheme-video.active {
     flex-direction: column; justify-content: center;
     padding: clamp(18px, 3.5vw, 40px);
@@ -537,7 +536,6 @@
     max-width: min(920px, 100%);
     margin: 0 auto;
   }
-
 
   .slide.problem-combo.active {
     flex-direction: column; justify-content: center;
@@ -624,20 +622,9 @@
     </div>
   </section>
 
-  <!-- 3 cast prompt -->
-  <section class="slide cast-prompt" data-title="组剧组">
-    <div class="tag">03 · 一句话建组</div>
-    <div class="cast-row">
-      <div class="cast-shot">
-        <img src="cast-members.png" alt="成员：陈俊生 / 罗子君 / 贺涵 / 凌玲 / 薛甄珠 / 唐晶" />
-      </div>
-      <p class="big">我发了一个提示词：<br/><em>请按照《我的前半生》匹配我App优化迭代组</em></p>
-    </div>
-  </section>
-
   <!-- 4 problem + old home shots -->
   <section class="slide problem-combo" data-title="问题">
-    <div class="tag">04 · 真实问题</div>
+    <div class="tag">03 · 真实问题</div>
     <div class="problem-combo-row">
       <div>
         <h2>旧版好看但懵，新版清楚但冷</h2>
@@ -677,11 +664,21 @@
     </div>
   </section>
 
-
   <!-- 5 goal -->
   <section class="slide center" data-title="目标">
-    <div class="tag">05 · 目标一句话</div>
+    <div class="tag">04 · 目标一句话</div>
     <p class="quote">聊天主路径不动，把旧版的温度接回来，但不回到「满屏不知道点哪」。<small>主导航这轮不动 · 只改首页信息架构 + 视觉密度</small></p>
+  </section>
+
+  <!-- 3 cast prompt -->
+  <section class="slide cast-prompt" data-title="组剧组">
+    <div class="tag">05 · 一句话建组</div>
+    <div class="cast-row">
+      <div class="cast-shot">
+        <img src="cast-members.png" alt="成员：陈俊生 / 罗子君 / 贺涵 / 凌玲 / 薛甄珠 / 唐晶" />
+      </div>
+      <p class="big">我发了一个提示词：<br/><em>请按照《我的前半生》匹配我App优化迭代组</em></p>
+    </div>
   </section>
 
   <!-- 6 how -->
@@ -823,18 +820,6 @@
     </div>
   </section>
 
-</div>
-
-<div class="video-modal" id="videoModal" aria-hidden="true">
-  <div class="panel">
-    <button class="close" id="videoClose" type="button" aria-label="关闭">×</button>
-    <video id="modalVideo" src="xuezhenzhu-flatbot-4x3.mp4" controls playsinline></video>
-  </div>
-</div>
-
-<div class="nav-btns" aria-label="翻页">
-  <button type="button" id="navPrev" title="上一页">▲</button>
-  <button type="button" id="navNext" title="下一页">▼</button>
 </div>
 <div class="footer-bar">
   <span>Bot和我的后半生「剧组」迭代我的App</span>
