@@ -510,6 +510,34 @@
     font-style: normal; color: var(--pink);
   }
 
+
+  .slide.scheme-video.active {
+    flex-direction: column; justify-content: center;
+    padding: clamp(18px, 3.5vw, 40px);
+  }
+  .scheme-video .tag { align-self: flex-start; }
+  .scheme-row {
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 1.05fr);
+    gap: clamp(16px, 2.5vw, 28px);
+    align-items: center;
+    width: min(1200px, 100%);
+    margin-top: 6px;
+  }
+  @media (max-width: 900px) {
+    .scheme-row { grid-template-columns: 1fr; }
+  }
+  .scheme-copy h2 { margin-bottom: 12px; }
+  .scheme-copy .grid { width: 100%; }
+  /* page 6 shots only — full width three phones */
+  .app-compare-row.shots-only {
+    grid-template-columns: 1fr;
+  }
+  .app-compare-row.shots-only .shot-col {
+    max-width: min(920px, 100%);
+    margin: 0 auto;
+  }
+
 </style>
 </head>
 <body>
@@ -608,10 +636,10 @@
     </div>
   </section>
 
-  <!-- 4 app before: shots + demo video -->
+  <!-- 4 app before: shots only -->
   <section class="slide app-compare" data-title="旧版首页">
     <div class="tag">05 · 旧版长这样</div>
-    <div class="app-compare-row">
+    <div class="app-compare-row shots-only">
       <div class="shot-col">
         <figure>
           <div class="phone"><img src="app-shot-1.png" alt="旧版首页截图 1" /></div>
@@ -625,9 +653,6 @@
           <div class="phone"><img src="app-shot-3.png" alt="聊天记一餐" /></div>
           <figcaption>3</figcaption>
         </figure>
-      </div>
-      <div class="demo-col">
-        <video src="app-demo.mp4" controls playsinline preload="metadata"></video>
       </div>
     </div>
   </section>
@@ -656,14 +681,21 @@
     </div>
   </section>
 
-  <!-- 7 design options -->
-  <section class="slide" data-title="方案">
+  <!-- 7 design options + demo video -->
+  <section class="slide scheme-video" data-title="方案">
     <div class="tag">08 · 设计当场给对比</div>
-    <h2>三案，锁 A</h2>
-    <div class="grid 3" style="margin-top:8px">
-      <div class="card good"><em>选中 · A</em><strong>顶栏轻今日条</strong><p>空态：欢迎 + 唯一主按钮「拍这一顿」；有记录收掉欢迎</p></div>
-      <div class="card"><em>否 · B</em><strong>空态 Soft Hero</strong><p>更暖，但空态/有记录跳变大</p></div>
-      <div class="card"><em>否 · C</em><strong>只暖会话</strong><p>改动最小，今日感不够</p></div>
+    <div class="scheme-row">
+      <div class="scheme-copy">
+        <h2>三案，锁 A</h2>
+        <div class="grid" style="grid-template-columns:1fr; gap:12px; margin-top:8px">
+          <div class="card good"><em>选中 · A</em><strong>顶栏轻今日条</strong><p>空态：欢迎 + 唯一主按钮「拍这一顿」；有记录收掉欢迎</p></div>
+          <div class="card"><em>否 · B</em><strong>空态 Soft Hero</strong><p>更暖，但空态/有记录跳变大</p></div>
+          <div class="card"><em>否 · C</em><strong>只暖会话</strong><p>改动最小，今日感不够</p></div>
+        </div>
+      </div>
+      <div class="demo-col">
+        <video src="app-demo.mp4" controls playsinline preload="metadata"></video>
+      </div>
     </div>
   </section>
 
