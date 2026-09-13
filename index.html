@@ -647,27 +647,57 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: clamp(24px, 4vw, 48px);
+    padding: clamp(28px, 4vw, 56px);
   }
   .end-row {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(200px, 280px);
-    gap: clamp(24px, 4vw, 48px);
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: clamp(28px, 4vw, 56px);
     align-items: center;
-    width: min(1100px, 100%);
+    width: min(980px, 100%);
   }
   .end-copy {
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
   }
   .end-copy .bot-stage {
-    transform: scale(0.72);
-    transform-origin: left center;
-    margin: 0 0 4px;
+    width: 160px;
+    height: 160px;
+    transform: none;
+    margin: 0 0 8px;
+    flex-shrink: 0;
+  }
+  .end-copy .bot-stage .bot {
+    width: 118px;
+    height: 118px;
+  }
+  .end-copy .bot-stage .bot-mark {
+    width: 72px;
+    height: 72px;
+  }
+  .end-copy .bot-stage .lips {
+    width: 46px;
+    height: 20px;
+    bottom: 28px;
+  }
+  .end-copy .bot-stage .wing {
+    top: 42px;
+    width: 26px;
+    height: 36px;
+  }
+  .end-copy .bot-stage .chirp {
+    font-size: 12px;
+    top: 8px;
+    right: -8px;
   }
   .end-title {
-    font-size: clamp(26px, 3.6vw, 44px);
-    line-height: 1.25;
+    font-size: clamp(26px, 3.4vw, 42px);
+    line-height: 1.28;
     margin: 0;
+    max-width: 14em;
   }
   .end-thanks {
     margin-top: 14px;
@@ -680,14 +710,14 @@
   }
   .end-qr {
     margin: 0;
-    width: 100%;
-    max-width: 280px;
+    width: 240px;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--line);
     background: #fff;
     box-shadow: 0 12px 28px rgba(0,0,0,.28);
     justify-self: end;
+    align-self: center;
   }
   .end-qr img {
     display: block;
@@ -698,16 +728,12 @@
     .end-row {
       grid-template-columns: 1fr;
       justify-items: center;
-      text-align: center;
+      gap: 20px;
     }
-    .end-copy { text-align: center; }
-    .end-copy .bot-stage {
-      transform-origin: center center;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .end-copy { align-items: center; text-align: center; }
+    .end-title { text-align: center; }
     .end-copy .meta { justify-content: center; }
-    .end-qr { justify-self: center; max-width: 220px; }
+    .end-qr { justify-self: center; width: min(220px, 70vw); }
   }
 
 </style>
@@ -943,7 +969,7 @@
   <section class="slide end-slide" data-title="结尾">
     <div class="end-row">
       <div class="end-copy">
-<div class="bot-stage" aria-hidden="true">
+        <div class="bot-stage" aria-hidden="true">
         <div class="aura"></div>
         <div class="spark s1"></div>
         <div class="spark s2"></div>
@@ -965,7 +991,6 @@
           <div class="chirp">啾~</div>
         </div>
       </div>
-</div>
         <h1 class="end-title">一人做 App，<br/>不妨先搭一个《我的后半生》剧组。</h1>
         <p class="end-thanks">谢谢 · 欢迎提问，欢迎扩列</p>
         <div class="meta">
