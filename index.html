@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <!-- deck-build: 20260913-endfix2 -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bot和我的后半生「剧组」迭代我的App · 广州分享</title>
@@ -644,80 +645,66 @@
   }
   .nowrap { white-space: nowrap; }
   .slide.end-slide.active {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: clamp(28px, 4vw, 56px);
+    padding: clamp(24px, 3.5vw, 48px) clamp(24px, 4vw, 56px) 64px;
   }
   .end-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 240px;
-    gap: clamp(28px, 4vw, 56px);
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    width: min(980px, 100%);
+    justify-content: center;
+    gap: clamp(32px, 5vw, 64px);
+    width: min(1000px, 100%);
   }
   .end-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 560px;
     text-align: left;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-width: 0;
   }
   .end-copy .bot-stage {
-    width: 160px;
-    height: 160px;
-    transform: none;
-    margin: 0 0 8px;
+    width: 150px;
+    height: 150px;
+    margin: 0 0 10px;
     flex-shrink: 0;
   }
-  .end-copy .bot-stage .bot {
-    width: 118px;
-    height: 118px;
-  }
-  .end-copy .bot-stage .bot-mark {
-    width: 72px;
-    height: 72px;
-  }
-  .end-copy .bot-stage .lips {
-    width: 46px;
-    height: 20px;
-    bottom: 28px;
-  }
-  .end-copy .bot-stage .wing {
-    top: 42px;
-    width: 26px;
-    height: 36px;
-  }
-  .end-copy .bot-stage .chirp {
-    font-size: 12px;
-    top: 8px;
-    right: -8px;
-  }
+  .end-copy .bot-stage .bot { width: 110px; height: 110px; }
+  .end-copy .bot-stage .bot-mark { width: 66px; height: 66px; }
+  .end-copy .bot-stage .lips { width: 42px; height: 18px; bottom: 26px; }
+  .end-copy .bot-stage .wing { top: 40px; width: 24px; height: 34px; }
+  .end-copy .bot-stage .chirp { font-size: 11px; top: 6px; right: -6px; }
+  .end-copy .bot-stage .heart.h1 { left: 18px; top: 36px; }
+  .end-copy .bot-stage .heart.h2 { right: 14px; top: 46px; }
   .end-title {
-    font-size: clamp(26px, 3.4vw, 42px);
+    font-size: clamp(24px, 3.2vw, 40px);
     line-height: 1.28;
     margin: 0;
-    max-width: 14em;
   }
   .end-thanks {
-    margin-top: 14px;
+    margin-top: 12px;
     color: var(--muted);
-    font-size: clamp(16px, 1.8vw, 22px);
+    font-size: clamp(15px, 1.7vw, 20px);
   }
   .end-copy .meta {
     justify-content: flex-start;
-    margin-top: 18px;
+    margin-top: 16px;
   }
   .end-qr {
+    flex: 0 0 220px;
+    width: 220px;
     margin: 0;
-    width: 240px;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--line);
     background: #fff;
     box-shadow: 0 12px 28px rgba(0,0,0,.28);
-    justify-self: end;
-    align-self: center;
   }
   .end-qr img {
     display: block;
@@ -726,14 +713,13 @@
   }
   @media (max-width: 820px) {
     .end-row {
-      grid-template-columns: 1fr;
-      justify-items: center;
+      flex-direction: column;
       gap: 20px;
     }
-    .end-copy { align-items: center; text-align: center; }
+    .end-copy { align-items: center; text-align: center; max-width: 100%; }
     .end-title { text-align: center; }
     .end-copy .meta { justify-content: center; }
-    .end-qr { justify-self: center; width: min(220px, 70vw); }
+    .end-qr { flex-basis: auto; width: min(200px, 70vw); }
   }
 
 </style>
@@ -970,16 +956,16 @@
     <div class="end-row">
       <div class="end-copy">
         <div class="bot-stage" aria-hidden="true">
-        <div class="aura"></div>
-        <div class="spark s1"></div>
-        <div class="spark s2"></div>
-        <div class="spark s3"></div>
-        <div class="bot" id="endBot">
-          <div class="wing l"></div>
-          <div class="wing r"></div>
-          <div class="heart h1"></div>
-          <div class="heart h2"></div>
-          <div class="bot-mark"><svg viewBox="-15 -15 259 259" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="aura"></div>
+          <div class="spark s1"></div>
+          <div class="spark s2"></div>
+          <div class="spark s3"></div>
+          <div class="bot" id="endBot">
+            <div class="wing l"></div>
+            <div class="wing r"></div>
+            <div class="heart h1"></div>
+            <div class="heart h2"></div>
+            <div class="bot-mark"><svg viewBox="-15 -15 259 259" fill="none" xmlns="http://www.w3.org/2000/svg">
   <mask id="grok-bot-eyes-end" maskUnits="userSpaceOnUse" x="-15" y="-15" width="259" height="259">
     <rect x="-15" y="-15" width="259" height="259" fill="white"/>
     <path d="M130.36 45.98L132.71 46.19L134.98 46.81L137.11 47.83L138.97 49.28L140.47 51.09L141.68 53.12L142.73 55.23L143.76 57.36L144.78 59.49L145.79 61.62L146.79 63.76L147.76 65.91L148.71 68.07L149.63 70.25L150.52 72.43L151.37 74.63L151.99 76.91L152.10 79.26L151.64 81.57L150.59 83.68L149.04 85.45L147.10 86.78L144.90 87.62L142.56 87.93L140.22 87.71L137.98 86.99L135.93 85.82L134.17 84.24L132.78 82.34L131.69 80.25L130.77 78.08L129.87 75.89L128.94 73.72L128.00 71.56L127.03 69.40L126.05 67.26L125.05 65.12L124.03 62.99L122.93 60.90L121.87 58.79L121.03 56.59L120.72 54.26L121.10 51.93L122.15 49.83L123.75 48.10L125.76 46.89L128.01 46.19Z" fill="black"/>
@@ -987,10 +973,10 @@
   </mask>
   <path d="M228.541 114.228C228.541 130.133 225.184 145.994 218.738 160.534C212.674 174.217 203.904 186.669 193.065 196.988C155.933 232.34 99.497 238.596 55.5255 212.24C45.097 205.99 35.6851 198.072 27.7451 188.866C19.1926 178.953 12.3686 167.569 7.65781 155.351C2.60712 142.264 0 128.257 0 114.228C0 98.3219 3.35751 82.4611 9.80315 67.9215C15.8672 54.2382 24.6377 41.7862 35.4767 31.4668C72.6081 -3.88483 129.044 -10.1413 173.016 16.2153C183.444 22.4653 192.856 30.3829 200.796 39.5896C209.349 49.5018 216.173 60.8859 220.883 73.1037C225.934 86.1906 228.541 100.198 228.541 114.228Z" fill="currentColor" mask="url(#grok-bot-eyes-end)"/>
 </svg></div>
-          <div class="lips" aria-hidden="true"></div>
-          <div class="chirp">啾~</div>
+            <div class="lips" aria-hidden="true"></div>
+            <div class="chirp">啾~</div>
+          </div>
         </div>
-      </div>
         <h1 class="end-title">一人做 App，<br/>不妨先搭一个《我的后半生》剧组。</h1>
         <p class="end-thanks">谢谢 · 欢迎提问，欢迎扩列</p>
         <div class="meta">
