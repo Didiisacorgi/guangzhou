@@ -538,6 +538,29 @@
     margin: 0 auto;
   }
 
+
+  .slide.problem-combo.active {
+    flex-direction: column; justify-content: center;
+    padding: clamp(16px, 3vw, 36px);
+  }
+  .problem-combo .tag { align-self: flex-start; }
+  .problem-combo-row {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.95fr) 1.15fr;
+    gap: clamp(16px, 2.5vw, 28px);
+    align-items: center;
+    width: min(1200px, 100%);
+    margin-top: 6px;
+  }
+  @media (max-width: 900px) {
+    .problem-combo-row { grid-template-columns: 1fr; }
+  }
+  .problem-combo-row .vs { width: 100%; flex-direction: column; }
+  .problem-combo-row h2 { margin-bottom: 10px; font-size: clamp(22px, 2.8vw, 34px); }
+  .problem-combo-row .shot-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 </style>
 </head>
 <body>
@@ -612,34 +635,31 @@
     </div>
   </section>
 
-  <!-- 4 problem -->
-  <section class="slide" data-title="问题">
+  <!-- 4 problem + old home shots -->
+  <section class="slide problem-combo" data-title="问题">
     <div class="tag">04 · 真实问题</div>
-    <h2>旧版好看但懵，新版清楚但冷</h2>
-    <div class="vs" style="margin-top:8px">
-      <div class="card bad">
-        <em>旧版</em>
-        <strong>温度有了，入口打架</strong>
-        <ul>
-          <li>大 +、相机 Tab、Craving Brake…</li>
-          <li>用户问：我到底从哪开始？</li>
-        </ul>
+    <div class="problem-combo-row">
+      <div>
+        <h2>旧版好看但懵，新版清楚但冷</h2>
+        <div class="vs" style="margin-top:8px">
+          <div class="card bad">
+            <em>旧版</em>
+            <strong>温度有了，入口打架</strong>
+            <ul>
+              <li>大 +、相机 Tab、Craving Brake…</li>
+              <li>用户问：我到底从哪开始？</li>
+            </ul>
+          </div>
+          <div class="card good">
+            <em>新版聊天</em>
+            <strong>主路径清了，首页肃静</strong>
+            <ul>
+              <li>聊天可记饮食和情绪</li>
+              <li>小鹦退场，今日感消失</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="card good">
-        <em>新版聊天</em>
-        <strong>主路径清了，首页肃静</strong>
-        <ul>
-          <li>聊天可记饮食和情绪</li>
-          <li>小鹦退场，今日感消失</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 app before: shots only -->
-  <section class="slide app-compare" data-title="旧版首页">
-    <div class="tag">05 · 旧版长这样</div>
-    <div class="app-compare-row shots-only">
       <div class="shot-col">
         <figure>
           <div class="phone"><img src="app-shot-1.png" alt="旧版首页截图 1" /></div>
@@ -657,15 +677,16 @@
     </div>
   </section>
 
+
   <!-- 5 goal -->
   <section class="slide center" data-title="目标">
-    <div class="tag">06 · 目标一句话</div>
+    <div class="tag">05 · 目标一句话</div>
     <p class="quote">聊天主路径不动，把旧版的温度接回来，但不回到「满屏不知道点哪」。<small>主导航这轮不动 · 只改首页信息架构 + 视觉密度</small></p>
   </section>
 
   <!-- 6 how -->
   <section class="slide" data-title="流程">
-    <div class="tag">07 · 《我的后半生》剧组怎么跑</div>
+    <div class="tag">06 · 《我的后半生》剧组怎么跑</div>
     <h2>一条流水线</h2>
     <div class="flow" style="margin-top:12px">
       <div class="pill">Orange 定功能</div><div class="arrow">→</div>
@@ -683,7 +704,7 @@
 
   <!-- 7 design options + demo video -->
   <section class="slide scheme-video" data-title="方案">
-    <div class="tag">08 · 设计当场给对比</div>
+    <div class="tag">07 · 设计当场给对比</div>
     <div class="scheme-row">
       <div class="scheme-copy">
         <h2>三案，锁 A</h2>
@@ -701,7 +722,7 @@
 
   <!-- 5 round1 result -->
   <section class="slide round1" data-title="第一轮结果">
-    <div class="tag">09 · 第一轮交付</div>
+    <div class="tag">08 · 第一轮交付</div>
     <div class="round1-row">
       <div class="round1-copy">
         <p class="big">第一轮结果</p>
@@ -716,7 +737,7 @@
 
   <!-- 6 fine tune -->
   <section class="slide tune" data-title="微调">
-    <div class="tag">10 · 继续打磨</div>
+    <div class="tag">09 · 继续打磨</div>
     <div class="tune-row">
       <div class="tune-shots">
         <div class="phone"><img src="tune-shot-1.png" alt="微调截图 1" /></div>
@@ -732,7 +753,7 @@
 
   <!-- 8 hard rules -->
   <section class="slide" data-title="硬条件">
-    <div class="tag">11 · 硬条件写进稿</div>
+    <div class="tag">10 · 硬条件写进稿</div>
     <h2>不是「好看就行」</h2>
     <div class="grid 2" style="margin-top:8px">
       <div class="card"><strong>主行动压过次要链</strong><p>「拍这一顿」实心大按钮；「或者说一句」只做文字链</p></div>
@@ -744,7 +765,7 @@
 
   <!-- 9 demo moments -->
   <section class="slide" data-title="演示">
-    <div class="tag">12 · 现场可演示</div>
+    <div class="tag">11 · 现场可演示</div>
     <h2>建议你现场秀这 4 段</h2>
     <div class="grid 2" style="margin-top:8px">
       <div class="card"><em>01</em><strong>把问题丢进《我的后半生》剧组群</strong><p>旧图 + 新图 + 一句话痛点</p></div>
@@ -756,7 +777,7 @@
 
   <!-- 10 tips -->
   <section class="slide" data-title="可复制">
-    <div class="tag">13 · 你可以复制</div>
+    <div class="tag">12 · 你可以复制</div>
     <h2>建《我的后半生》剧组的 5 条</h2>
     <ul style="margin-top:8px; max-width:900px">
       <li><span class="kicker">角色要互斥</span>：别两个都叫产品经理</li>
@@ -769,7 +790,7 @@
 
   <!-- 11 pitfalls -->
   <section class="slide" data-title="坑">
-    <div class="tag">14 · 我踩过的坑</div>
+    <div class="tag">13 · 我踩过的坑</div>
     <h2>分享时诚实一点更好笑也更有用</h2>
     <div class="grid 2" style="margin-top:8px">
       <div class="card"><strong>生图比例会飘</strong><p>竖屏写成 9:16，也可能出 1280×720</p></div>
