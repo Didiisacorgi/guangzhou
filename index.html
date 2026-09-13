@@ -585,11 +585,34 @@
     padding-bottom: 56px;
   }
   .adhd-boss .adhd-big {
-    font-size: clamp(28px, 4.6vw, 52px);
-    line-height: 1.15;
+    font-size: clamp(26px, 4.4vw, 50px);
+    line-height: 1.2;
     font-weight: 750;
     letter-spacing: -0.03em;
     margin: 4px 0 14px;
+    min-height: 1.3em;
+    white-space: pre-wrap;
+  }
+  .adhd-boss .adhd-type-text .hl {
+    color: var(--pink);
+    font-style: normal;
+  }
+  .adhd-boss .adhd-caret {
+    display: inline-block;
+    width: 0.08em;
+    height: 0.95em;
+    margin-left: 0.06em;
+    background: var(--pink);
+    vertical-align: -0.08em;
+    animation: adhdBlink 0.9s steps(1) infinite;
+  }
+  .adhd-boss .adhd-caret.done {
+    opacity: 0;
+    animation: none;
+  }
+  @keyframes adhdBlink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
   }
   .adhd-shots {
     display: grid;
@@ -838,7 +861,7 @@
   <!-- 13 ADHD boss chat screenshots -->
   <section class="slide adhd-boss" data-title="友好ADHD老板">
     <div class="tag">12 · 现场花絮</div>
-    <h2 class="adhd-big">友好ADHD老板</h2>
+    <h2 class="adhd-big" id="adhdType" aria-label="最重要的是：友好ADHD老板"><span class="adhd-type-text"></span><span class="adhd-caret" aria-hidden="true"></span></h2>
     <div class="adhd-shots">
       <div class="adhd-shot"><img src="adhd-boss-1.png" alt="剧组聊天截图 1"></div>
       <div class="adhd-shot"><img src="adhd-boss-2.png" alt="剧组聊天截图 2"></div>
@@ -920,6 +943,39 @@
         try { slideVideo.currentTime = 1.2; } catch (_) {}
       }
     }
+    runAdhdTypewriter(active);
+  }
+
+  let adhdTypeTimer = null;
+  function runAdhdTypewriter(active) {
+    const el = document.getElementById('adhdType');
+    if (!el) return;
+    const textEl = el.querySelector('.adhd-type-text');
+    const caret = el.querySelector('.adhd-caret');
+    if (!textEl || !caret) return;
+    if (adhdTypeTimer) { clearTimeout(adhdTypeTimer); adhdTypeTimer = null; }
+    textEl.textContent = '';
+    caret.classList.remove('done');
+    if (!active || !active.classList.contains('adhd-boss')) return;
+    const full = '最重要的是：友好ADHD老板';
+    const hlFrom = full.indexOf('友好ADHD老板');
+    let n = 0;
+    const tick = () => {
+      n += 1;
+      const cur = full.slice(0, n);
+      if (hlFrom >= 0 && n > hlFrom) {
+        textEl.innerHTML = cur.slice(0, hlFrom) + '<span class="hl">' + cur.slice(hlFrom) + '</span>';
+      } else {
+        textEl.textContent = cur;
+      }
+      if (n < full.length) {
+        adhdTypeTimer = setTimeout(tick, n < 6 ? 72 : 58);
+      } else {
+        caret.classList.add('done');
+        adhdTypeTimer = null;
+      }
+    };
+    adhdTypeTimer = setTimeout(tick, 220);
   }
   function next() { show(i + 1); }
   function prev() { show(i - 1); }
