@@ -577,6 +577,44 @@
     font-size: clamp(22px, 3vw, 36px);
   }
 
+
+  .slide.adhd-boss.active {
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding-top: clamp(28px, 4vw, 48px);
+    padding-bottom: 56px;
+  }
+  .adhd-boss .adhd-big {
+    font-size: clamp(28px, 4.6vw, 52px);
+    line-height: 1.15;
+    font-weight: 750;
+    letter-spacing: -0.03em;
+    margin: 4px 0 14px;
+  }
+  .adhd-shots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(10px, 1.6vw, 16px);
+    width: min(1280px, 100%);
+    align-items: start;
+  }
+  .adhd-shot {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #111;
+    box-shadow: 0 12px 28px rgba(0,0,0,.32);
+  }
+  .adhd-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+  }
+  @media (max-width: 900px) {
+    .adhd-shots { grid-template-columns: 1fr; max-width: 520px; }
+  }
+
 </style>
 </head>
 <body>
@@ -796,7 +834,19 @@
   </section>
 
 
-  <!-- 12 closing -->
+
+  <!-- 13 ADHD boss chat screenshots -->
+  <section class="slide adhd-boss" data-title="友好ADHD老板">
+    <div class="tag">12 · 现场花絮</div>
+    <h2 class="adhd-big">友好ADHD老板</h2>
+    <div class="adhd-shots">
+      <div class="adhd-shot"><img src="adhd-boss-1.png" alt="剧组聊天截图 1"></div>
+      <div class="adhd-shot"><img src="adhd-boss-2.png" alt="剧组聊天截图 2"></div>
+      <div class="adhd-shot"><img src="adhd-boss-3.png" alt="剧组聊天截图 3"></div>
+    </div>
+  </section>
+
+  <!-- 14 closing -->
   <section class="slide center" data-title="结尾">
         <div class="bot-stage" style="transform:scale(0.78); margin-bottom:8px" aria-hidden="true">
       <div class="aura"></div>
