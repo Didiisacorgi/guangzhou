@@ -638,6 +638,31 @@
     .adhd-shots { grid-template-columns: 1fr; max-width: 520px; }
   }
 
+
+  .cover-sub {
+    max-width: min(40em, 92vw);
+  }
+  .nowrap { white-space: nowrap; }
+  .end-qr {
+    margin: 18px auto 0;
+    width: min(220px, 42vw);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,.28);
+  }
+  .end-qr img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .end-thanks {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: clamp(16px, 1.8vw, 22px);
+  }
+
 </style>
 </head>
 <body>
@@ -672,7 +697,7 @@
       <div class="title-block">
         <div class="tag">广州 · Grok Bot Meetup</div>
         <h1 class="cover-title"><span class="line1">Bot和我的后半生「剧组」</span><span class="line2">迭代我的App</span></h1>
-        <p class="sub">从「首页太肃静」到方案落地：一人导演，多角色协作</p>
+        <p class="sub cover-sub">从「首页太肃静」到方案落地：<span class="nowrap">一人导演，多角色协作</span></p>
         <div class="meta">
           <span>案例：oiioCare</span>
           <span>角色：产品 / 设计 / 体验 / 风控 / QA / 项目</span>
@@ -680,8 +705,6 @@
         </div>
       </div>
     </div>
-    <p class="bot-hint">点击上方 Bot 播放短片</p>
-    <p class="hint">← → 或空格翻页 · F 全屏</p>
   </section>
 
   <!-- 1 about Orange -->
@@ -885,7 +908,8 @@
       </div>
     </div>
     <h1 style="font-size:clamp(28px,4vw,48px)">一人做 App，<br/>不妨先搭一个《我的后半生》剧组。</h1>
-    <p class="sub" style="margin-top:16px;color:var(--muted)">谢谢 · 欢迎提问</p>
+    <p class="end-thanks">谢谢 · 欢迎提问，欢迎扩列</p>
+    <div class="end-qr"><img src="wechat-qr.jpg" alt="微信二维码：Orange穿恒源祥的女魔头"></div>
     <div class="meta">
       <span>Grok Bot × oiioCare</span>
       <span>广州分享</span>
