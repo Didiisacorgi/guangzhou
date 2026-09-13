@@ -472,6 +472,49 @@
     object-fit: cover; object-position: top center;
   }
 
+
+  .slide.tune.active {
+    flex-direction: column; justify-content: center;
+    padding: clamp(16px, 3vw, 36px);
+  }
+  .tune .tag { align-self: flex-start; }
+  .tune-row {
+    display: grid;
+    grid-template-columns: 1.35fr 0.9fr;
+    gap: clamp(18px, 3vw, 36px);
+    align-items: center;
+    width: min(1220px, 100%);
+    margin-top: 6px;
+  }
+  @media (max-width: 900px) {
+    .tune-row { grid-template-columns: 1fr; }
+    .tune-copy { text-align: center; }
+  }
+  .tune-shots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: end;
+  }
+  .tune-shots .phone {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--line); background: #111;
+    box-shadow: 0 14px 32px rgba(0,0,0,.35);
+    aspect-ratio: 9 / 19.5;
+  }
+  .tune-shots img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+  }
+  .tune-copy .big {
+    font-size: clamp(32px, 4.8vw, 58px);
+    line-height: 1.2; font-weight: 750; letter-spacing: -0.03em;
+    color: var(--text);
+  }
+  .tune-copy .big em {
+    font-style: normal; color: var(--pink);
+  }
+
 </style>
 </head>
 <body>
@@ -582,10 +625,25 @@
       </div>
     </div>
   </section>
+  <!-- 6 fine tune -->
+  <section class="slide tune" data-title="微调">
+    <div class="tag">06 · 继续打磨</div>
+    <div class="tune-row">
+      <div class="tune-shots">
+        <div class="phone"><img src="tune-shot-1.png" alt="微调截图 1" /></div>
+        <div class="phone"><img src="tune-shot-2.png" alt="微调截图 2" /></div>
+        <div class="phone"><img src="tune-shot-3.png" alt="微调截图 3" /></div>
+        <div class="phone"><img src="tune-shot-4.png" alt="微调截图 4" /></div>
+      </div>
+      <div class="tune-copy">
+        <p class="big">还可以，<em>微调一下</em></p>
+      </div>
+    </div>
+  </section>
 
   <!-- 4 problem -->
   <section class="slide" data-title="问题">
-    <div class="tag">06 · 真实问题</div>
+    <div class="tag">07 · 真实问题</div>
     <h2>旧版好看但懵，新版清楚但冷</h2>
     <div class="vs" style="margin-top:8px">
       <div class="card bad">
